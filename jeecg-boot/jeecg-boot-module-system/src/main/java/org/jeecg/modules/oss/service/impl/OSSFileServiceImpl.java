@@ -1,7 +1,5 @@
 package org.jeecg.modules.oss.service.impl;
 
-import java.io.IOException;
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.jeecg.config.oss.OSSManager;
 import org.jeecg.config.oss.OSSProperties;
@@ -11,6 +9,8 @@ import org.jeecg.modules.oss.service.IOSSFileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @Service("ossFileService")
 public class OSSFileServiceImpl extends ServiceImpl<OSSFileMapper, OSSFile> implements IOSSFileService {

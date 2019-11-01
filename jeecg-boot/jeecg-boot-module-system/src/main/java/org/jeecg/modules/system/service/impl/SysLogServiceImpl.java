@@ -1,12 +1,6 @@
 package org.jeecg.modules.system.service.impl;
 
-import java.sql.SQLException;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.jeecg.common.system.api.ISysBaseAPI;
 import org.jeecg.modules.system.entity.SysLog;
 import org.jeecg.modules.system.mapper.SysLogMapper;
@@ -14,7 +8,11 @@ import org.jeecg.modules.system.service.ISysLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import javax.annotation.Resource;
+import java.sql.SQLException;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -31,7 +29,7 @@ public class SysLogServiceImpl extends ServiceImpl<SysLogMapper, SysLog> impleme
 	private SysLogMapper sysLogMapper;
 	@Autowired
 	private ISysBaseAPI sysBaseAPI;
-	
+
 	/**
 	 * @功能：清空所有日志记录
 	 */

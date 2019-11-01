@@ -1,17 +1,16 @@
 package org.jeecg.modules.demo.test.vo;
 
-import java.util.List;
-
+import lombok.Data;
 import org.jeecg.modules.demo.test.entity.JeecgOrderCustomer;
 import org.jeecg.modules.demo.test.entity.JeecgOrderTicket;
 import org.jeecgframework.poi.excel.annotation.Excel;
 import org.jeecgframework.poi.excel.annotation.ExcelCollection;
 
-import lombok.Data;
+import java.util.List;
 
 @Data
 public class JeecgOrderMainPage {
-	
+
 	/**主键*/
 	private java.lang.String id;
 	/**订单号*/
@@ -35,10 +34,10 @@ public class JeecgOrderMainPage {
 	private java.lang.String updateBy;
 	/**修改时间*/
 	private java.util.Date updateTime;
-	
+
 	@ExcelCollection(name="客户")
 	private List<JeecgOrderCustomer> jeecgOrderCustomerList;
 	@ExcelCollection(name="机票")
 	private List<JeecgOrderTicket> jeecgOrderTicketList;
-	
+
 }

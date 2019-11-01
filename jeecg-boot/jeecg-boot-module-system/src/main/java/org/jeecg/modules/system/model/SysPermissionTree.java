@@ -1,10 +1,11 @@
 package org.jeecg.modules.system.model;
 
+import org.jeecg.modules.system.entity.SysPermission;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import org.jeecg.modules.system.entity.SysPermission;
 
 public class SysPermissionTree implements Serializable {
 
@@ -51,7 +52,7 @@ public class SysPermissionTree implements Serializable {
 	 * 跳转网页链接
 	 */
 	private String url;
-	
+
 	/**
 	 * 一级菜单跳转地址
 	 */
@@ -71,7 +72,7 @@ public class SysPermissionTree implements Serializable {
 	 * 是否叶子节点: 1:是 0:不是
 	 */
 	private boolean isLeaf;
-	
+
 	/**
 	 * 是否路由菜单: 0:不是  1:是（默认值1）
 	 */
@@ -118,7 +119,7 @@ public class SysPermissionTree implements Serializable {
     private boolean alwaysShow;
     /**是否隐藏路由菜单: 0否,1是（默认值0）*/
     private boolean hidden;
-    
+
     /**按钮权限状态(0无效1有效)*/
 	private java.lang.String status;
 

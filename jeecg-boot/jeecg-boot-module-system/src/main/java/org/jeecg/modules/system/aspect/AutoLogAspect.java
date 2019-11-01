@@ -1,10 +1,6 @@
 package org.jeecg.modules.system.aspect;
 
-import java.lang.reflect.Method;
-import java.util.Date;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.alibaba.fastjson.JSONObject;
 import org.apache.shiro.SecurityUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -21,12 +17,14 @@ import org.jeecg.modules.system.service.ISysLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.alibaba.fastjson.JSONObject;
+import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Method;
+import java.util.Date;
 
 
 /**
  * 系统日志，切面处理类
- * 
+ *
  * @Author scott
  * @email jeecgos@163.com
  * @Date 2018年1月14日
@@ -36,10 +34,10 @@ import com.alibaba.fastjson.JSONObject;
 public class AutoLogAspect {
 	@Autowired
 	private ISysLogService sysLogService;
-	
+
 	@Pointcut("@annotation(org.jeecg.common.aspect.annotation.AutoLog)")
-	public void logPointCut() { 
-		
+	public void logPointCut() {
+
 	}
 
 	@Around("logPointCut()")
@@ -66,15 +64,15 @@ public class AutoLogAspect {
 			//注解上的描述,操作日志内容
 			sysLog.setLogContent(syslog.value());
 			sysLog.setLogType(syslog.logType());
-			
+
 		}
 
 		//请求的方法名
 		String className = joinPoint.getTarget().getClass().getName();
 		String methodName = signature.getName();
 		sysLog.setMethod(className + "." + methodName + "()");
-		
-		
+
+
 		//设置操作类型
 		if (sysLog.getLogType() == CommonConstant.LOG_TYPE_2) {
 			sysLog.setOperateType(getOperateType(methodName, syslog.operateType()));

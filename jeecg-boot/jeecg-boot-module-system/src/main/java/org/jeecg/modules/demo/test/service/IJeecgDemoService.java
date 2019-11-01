@@ -1,9 +1,8 @@
 package org.jeecg.modules.demo.test.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import org.jeecg.common.system.base.service.JeecgService;
 import org.jeecg.modules.demo.test.entity.JeecgDemo;
-
-import com.baomidou.mybatisplus.core.metadata.IPage;
 
 /**
  * @Description: jeecg 测试demo
@@ -12,11 +11,11 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
  * @Version: V1.0
  */
 public interface IJeecgDemoService extends JeecgService<JeecgDemo> {
-	
+
 	public void testTran();
-	
+
 	public JeecgDemo getByIdCacheable(String id);
-	
+
 	/**
 	 * 查询列表数据 在service中获取数据权限sql信息
 	 * @param pageSize

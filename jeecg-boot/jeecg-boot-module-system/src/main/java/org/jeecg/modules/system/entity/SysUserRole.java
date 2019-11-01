@@ -1,13 +1,12 @@
 package org.jeecg.modules.system.entity;
 
-import java.io.Serializable;
-
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import java.io.Serializable;
 
 /**
  * <p>
@@ -26,7 +25,7 @@ public class SysUserRole implements Serializable {
 
     @TableId(type = IdType.ID_WORKER_STR)
     private String id;
-    
+
     /**
      * 用户id
      */
@@ -45,6 +44,6 @@ public class SysUserRole implements Serializable {
 		this.roleId = roleId;
 	}
 
-    
+
 
 }

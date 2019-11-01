@@ -1,34 +1,34 @@
 package org.jeecg.modules.system.model;
 
+import org.jeecg.modules.system.entity.SysPermission;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.jeecg.modules.system.entity.SysPermission;
-
 /**
   * 树形列表用到
  */
 public class TreeModel implements Serializable {
-	
+
 	private static final long serialVersionUID = 4013193970046502756L;
 
 	private String key;
-	
+
 	private String title;
-	
+
 	private String slotTitle;
-	
+
 	private boolean isLeaf;
-	
+
 	private String icon;
-	
+
 	private Integer ruleFlag;
-	
+
 	private Map<String,String> scopedSlots;
-	
+
 	public Map<String, String> getScopedSlots() {
 		return scopedSlots;
 	}
@@ -68,7 +68,7 @@ public class TreeModel implements Serializable {
 	public void setIcon(String icon) {
 		this.icon = icon;
 	}
-	
+
 	private List<TreeModel> children;
 
 	public List<TreeModel> getChildren() {
@@ -80,9 +80,9 @@ public class TreeModel implements Serializable {
 	}
 
 	public TreeModel() {
-		
+
 	}
-	
+
 	public TreeModel(SysPermission permission) {
 		this.key = permission.getId();
 		this.icon = permission.getIcon();
@@ -96,7 +96,7 @@ public class TreeModel implements Serializable {
 			this.children = new ArrayList<TreeModel>();
 		}
 	}
-	 
+
 	 public TreeModel(String key,String parentId,String slotTitle,Integer ruleFlag,boolean isLeaf) {
     	this.key = key;
     	this.parentId = parentId;
@@ -111,14 +111,14 @@ public class TreeModel implements Serializable {
     		this.children = new ArrayList<TreeModel>();
     	}
     }
-	 
+
 	 private String parentId;
-		
+
 	private String label;
-	
+
 	private String value;
-	
-	
+
+
 	public String getParentId() {
 		return parentId;
 	}

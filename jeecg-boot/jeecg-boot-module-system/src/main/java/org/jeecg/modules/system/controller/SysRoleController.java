@@ -1,24 +1,17 @@
 package org.jeecg.modules.system.controller;
 
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.shiro.authz.annotation.RequiresRoles;
+import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.SecurityUtils;
 import org.jeecg.common.api.vo.Result;
-import org.jeecg.common.constant.CacheConstant;
 import org.jeecg.common.constant.CommonConstant;
 import org.jeecg.common.system.query.QueryGenerator;
-import org.jeecg.common.util.PmsUtil;
+import org.jeecg.common.system.vo.LoginUser;
 import org.jeecg.common.util.oConvertUtils;
 import org.jeecg.modules.system.entity.SysPermission;
 import org.jeecg.modules.system.entity.SysPermissionDataRule;
@@ -29,33 +22,20 @@ import org.jeecg.modules.system.service.ISysPermissionDataRuleService;
 import org.jeecg.modules.system.service.ISysPermissionService;
 import org.jeecg.modules.system.service.ISysRolePermissionService;
 import org.jeecg.modules.system.service.ISysRoleService;
-import org.jeecgframework.poi.excel.ExcelImportUtil;
 import org.jeecgframework.poi.excel.def.NormalExcelConstants;
 import org.jeecgframework.poi.excel.entity.ExportParams;
 import org.jeecgframework.poi.excel.entity.ImportParams;
 import org.jeecgframework.poi.excel.view.JeecgEntityExcelView;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
-import org.jeecg.common.system.vo.LoginUser;
-import org.apache.shiro.SecurityUtils;
-import com.alibaba.fastjson.JSONObject;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
-import lombok.extern.slf4j.Slf4j;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.*;
 
 /**
  * <p>
@@ -71,13 +51,13 @@ import lombok.extern.slf4j.Slf4j;
 public class SysRoleController {
 	@Autowired
 	private ISysRoleService sysRoleService;
-	
+
 	@Autowired
 	private ISysPermissionDataRuleService sysPermissionDataRuleService;
-	
+
 	@Autowired
 	private ISysRolePermissionService sysRolePermissionService;
-	
+
 	@Autowired
 	private ISysPermissionService sysPermissionService;
 
@@ -102,7 +82,7 @@ public class SysRoleController {
 		result.setResult(pageList);
 		return result;
 	}
-	
+
 	/**
 	  *   添加
 	 * @param role
@@ -121,7 +101,7 @@ public class SysRoleController {
 		}
 		return result;
 	}
-	
+
 	/**
 	  *  编辑
 	 * @param role
@@ -141,10 +121,10 @@ public class SysRoleController {
 				result.success("修改成功!");
 			}
 		}
-		
+
 		return result;
 	}
-	
+
 	/**
 	  *   通过id删除
 	 * @param id
@@ -162,10 +142,10 @@ public class SysRoleController {
 				result.success("删除成功!");
 			}
 		}
-		
+
 		return result;
 	}
-	
+
 	/**
 	  *  批量删除
 	 * @param ids
@@ -182,7 +162,7 @@ public class SysRoleController {
 		}
 		return result;
 	}
-	
+
 	/**
 	  * 通过id查询
 	 * @param id
@@ -200,7 +180,7 @@ public class SysRoleController {
 		}
 		return result;
 	}
-	
+
 	@RequestMapping(value = "/queryall", method = RequestMethod.GET)
 	public Result<List<SysRole>> queryall() {
 		Result<List<SysRole>> result = new Result<>();
@@ -213,7 +193,7 @@ public class SysRoleController {
 		}
 		return result;
 	}
-	
+
 	/**
 	  * 校验角色编码唯一
 	 */
@@ -304,7 +284,7 @@ public class SysRoleController {
 		}
 		return Result.error("文件导入失败！");
 	}
-	
+
 	/**
 	 * 查询数据规则数据
 	 */
@@ -332,7 +312,7 @@ public class SysRoleController {
 			//TODO 以后按钮权限的查询也走这个请求 无非在map中多加两个key
 		}
 	}
-	
+
 	/**
 	 * 保存数据规则至角色菜单关联表
 	 */
@@ -359,8 +339,8 @@ public class SysRoleController {
 		}
 		return Result.ok("保存成功!");
 	}
-	
-	
+
+
 	/**
 	 * 用户角色授权功能，查询菜单权限树
 	 * @param request
@@ -391,7 +371,7 @@ public class SysRoleController {
 		}
 		return result;
 	}
-	
+
 	private void getTreeModelList(List<TreeModel> treeList,List<SysPermission> metaList,TreeModel temp) {
 		for (SysPermission permission : metaList) {
 			String tempPid = permission.getParentId();
@@ -407,9 +387,9 @@ public class SysRoleController {
 					getTreeModelList(treeList, metaList, tree);
 				}
 			}
-			
+
 		}
 	}
-	
-	
+
+
 }

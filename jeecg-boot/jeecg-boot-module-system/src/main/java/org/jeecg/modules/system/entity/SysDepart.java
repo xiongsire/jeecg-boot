@@ -6,20 +6,18 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.jeecg.common.aspect.annotation.Dict;
-import org.jeecg.modules.system.model.SysDepartTreeModel;
 import org.jeecgframework.poi.excel.annotation.Excel;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 
 /**
  * <p>
  * 部门表
  * <p>
- * 
+ *
  * @Author Steve
  * @Since  2019-01-22
  */
@@ -27,7 +25,7 @@ import java.util.Objects;
 @TableName("sys_depart")
 public class SysDepart implements Serializable {
     private static final long serialVersionUID = 1L;
-    
+
 	/**ID*/
 	@TableId(type = IdType.ID_WORKER_STR)
 	private String id;
@@ -88,7 +86,7 @@ public class SysDepart implements Serializable {
 	@JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date updateTime;
-	
+
 	/**
 	 * 重写equals方法
 	 */
@@ -132,9 +130,9 @@ public class SysDepart implements Serializable {
     @Override
     public int hashCode() {
 
-        return Objects.hash(super.hashCode(), id, parentId, departName, 
-        		departNameEn, departNameAbbr, departOrder, description,orgCategory, 
-        		orgType, orgCode, mobile, fax, address, memo, status, 
+        return Objects.hash(super.hashCode(), id, parentId, departName,
+        		departNameEn, departNameAbbr, departOrder, description,orgCategory,
+        		orgType, orgCode, mobile, fax, address, memo, status,
         		delFlag, createBy, createTime, updateBy, updateTime);
     }
 }

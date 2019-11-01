@@ -1,12 +1,11 @@
 package org.jeecg.modules.system.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
+import org.jeecg.modules.system.entity.SysLog;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
-import org.jeecg.modules.system.entity.SysLog;
-
-import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * <p>
@@ -22,7 +21,7 @@ public interface ISysLogService extends IService<SysLog> {
 	 * @功能：清空所有日志记录
 	 */
 	public void removeAll();
-	
+
 	/**
 	 * 获取系统总访问次数
 	 *
@@ -45,7 +44,7 @@ public interface ISysLogService extends IService<SysLog> {
 	 */
 	Long findTodayIp(Date dayStart, Date dayEnd);
 	//update-end--Author:zhangweijian  Date:20190428 for：传入开始时间，结束时间参数
-	
+
 	/**
 	 *   首页：根据时间统计访问数量/ip数量
 	 * @param dayStart

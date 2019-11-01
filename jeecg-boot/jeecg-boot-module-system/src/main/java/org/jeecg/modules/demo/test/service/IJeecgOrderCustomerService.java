@@ -1,10 +1,9 @@
 package org.jeecg.modules.demo.test.service;
 
-import java.util.List;
-
+import com.baomidou.mybatisplus.extension.service.IService;
 import org.jeecg.modules.demo.test.entity.JeecgOrderCustomer;
 
-import com.baomidou.mybatisplus.extension.service.IService;
+import java.util.List;
 
 /**
  * @Description: 订单客户
@@ -13,6 +12,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @Version: V1.0
  */
 public interface IJeecgOrderCustomerService extends IService<JeecgOrderCustomer> {
-	
+
 	public List<JeecgOrderCustomer> selectCustomersByMainId(String mainId);
 }

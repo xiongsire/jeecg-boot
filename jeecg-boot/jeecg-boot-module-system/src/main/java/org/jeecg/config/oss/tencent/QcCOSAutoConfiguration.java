@@ -1,8 +1,5 @@
 package org.jeecg.config.oss.tencent;
 
-import java.util.Map;
-import java.util.Properties;
-
 import com.qcloud.cos.COS;
 import com.qcloud.cos.COSClient;
 import com.qcloud.cos.ClientConfig;
@@ -18,6 +15,9 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.Map;
+import java.util.Properties;
 
 @Configuration
 @ConditionalOnClass({ COS.class })

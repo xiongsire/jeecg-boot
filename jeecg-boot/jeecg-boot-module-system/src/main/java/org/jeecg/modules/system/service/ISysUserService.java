@@ -1,18 +1,16 @@
 package org.jeecg.modules.system.service;
 
-import java.util.List;
-import java.util.Set;
-
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-
+import com.baomidou.mybatisplus.extension.service.IService;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.system.vo.SysUserCacheInfo;
 import org.jeecg.modules.system.entity.SysUser;
-
-import com.baomidou.mybatisplus.extension.service.IService;
 import org.jeecg.modules.system.model.SysUserSysDepartModel;
+
+import java.util.List;
+import java.util.Set;
 
 /**
  * <p>
@@ -56,17 +54,17 @@ public interface ISysUserService extends IService<SysUser> {
 	 * @return
 	 */
 	public boolean deleteBatchUsers(String userIds);
-	
+
 	public SysUser getUserByName(String username);
-	
+
 	/**
 	 * 添加用户和用户角色关系
 	 * @param user
 	 * @param roles
 	 */
 	public void addUserWithRole(SysUser user,String roles);
-	
-	
+
+
 	/**
 	 * 修改用户和用户角色关系
 	 * @param user
@@ -80,7 +78,7 @@ public interface ISysUserService extends IService<SysUser> {
 	 * @return
 	 */
 	public List<String> getRole(String username);
-	
+
 	/**
 	  * 查询用户信息包括 部门信息
 	 * @param username
@@ -137,14 +135,14 @@ public interface ISysUserService extends IService<SysUser> {
 	 * @return 权限集合
 	 */
 	Set<String> getUserPermissionsSet(String username);
-	
+
 	/**
 	 * 根据用户名设置部门ID
 	 * @param username
 	 * @param orgCode
 	 */
 	void updateUserDepart(String username,String orgCode);
-	
+
 	/**
 	 * 根据手机号获取用户名和密码
 	 */
@@ -170,7 +168,7 @@ public interface ISysUserService extends IService<SysUser> {
 	 * @param departs
 	 */
 	void editUserWithDepart(SysUser user, String departs);
-	
+
 	/**
 	   * 校验用户是否有效
 	 * @param sysUser

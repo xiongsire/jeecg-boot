@@ -1,11 +1,7 @@
 package org.jeecg.modules.system.aspect;
 
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -27,9 +23,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.PathMatcher;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-
-import lombok.extern.slf4j.Slf4j;
+import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
   * 数据权限切面处理类
@@ -41,21 +38,21 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 @Slf4j
 public class PermissionDataAspect {
-	
+
 	@Autowired
 	private ISysPermissionService sysPermissionService;
-	
+
 	@Autowired
 	private ISysPermissionDataRuleService sysPermissionDataRuleService;
-	
+
 	@Autowired
 	private ISysUserService sysUserService;
-	
+
 	@Pointcut("@annotation(org.jeecg.common.aspect.annotation.PermissionData)")
 	public void pointCut() {
-		
+
 	}
-	
+
 	@Around("pointCut()")
 	public Object arround(ProceedingJoinPoint point) throws  Throwable{
 		HttpServletRequest request = SpringContextUtils.getHttpServletRequest();
@@ -107,7 +104,7 @@ public class PermissionDataAspect {
 		}
 		return  point.proceed();
 	}
-	
+
 	private String filterUrl(String requestPath){
 		String url = "";
 		if(oConvertUtils.isNotEmpty(requestPath)){
@@ -122,7 +119,7 @@ public class PermissionDataAspect {
 		}
 		return url;
 	}
-	
+
 	/**
 	 * 获取请求地址
 	 * @param request
@@ -147,7 +144,7 @@ public class PermissionDataAspect {
 		requestPath = requestPath.substring(request.getContextPath().length() + 1);// 去掉项目路径
 		return filterUrl(requestPath);
 	}
-	
+
 	private boolean moHuContain(List<String> list,String key){
 		for(String str : list){
 			if(key.contains(str)){
@@ -156,7 +153,7 @@ public class PermissionDataAspect {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * 匹配前端传过来的地址 匹配成功返回正则地址
 	 * AntPathMatcher匹配地址
@@ -175,5 +172,5 @@ public class PermissionDataAspect {
 		}
 		return null;
 	}
-	
+
 }

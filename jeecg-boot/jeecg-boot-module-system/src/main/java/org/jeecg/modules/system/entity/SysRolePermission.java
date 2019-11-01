@@ -1,13 +1,12 @@
 package org.jeecg.modules.system.entity;
 
-import java.io.Serializable;
-
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import java.io.Serializable;
 
 /**
  * <p>
@@ -29,7 +28,7 @@ public class SysRolePermission implements Serializable {
      */
     @TableId(type = IdType.ID_WORKER_STR)
     private String id;
-    
+
     /**
      * 角色id
      */
@@ -39,7 +38,7 @@ public class SysRolePermission implements Serializable {
      * 权限id
      */
     private String permissionId;
-    
+
     /**
      * 数据权限
      */
@@ -47,7 +46,7 @@ public class SysRolePermission implements Serializable {
 
     public SysRolePermission() {
    	}
-       
+
    	public SysRolePermission(String roleId, String permissionId) {
    		this.roleId = roleId;
    		this.permissionId = permissionId;

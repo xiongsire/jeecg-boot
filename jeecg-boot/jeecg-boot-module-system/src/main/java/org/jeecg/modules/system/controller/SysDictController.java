@@ -1,16 +1,12 @@
 package org.jeecg.modules.system.controller;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.constant.CacheConstant;
@@ -35,24 +31,14 @@ import org.jeecgframework.poi.excel.view.JeecgEntityExcelView;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-
-import lombok.extern.slf4j.Slf4j;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.*;
 
 /**
  * <p>
@@ -134,7 +120,7 @@ public class SysDictController {
 			if(dictCode.indexOf(",")!=-1) {
 				//关联表字典（举例：sys_user,realname,id）
 				String[] params = dictCode.split(",");
-				
+
 				if(params.length<3) {
 					result.error500("字典Code格式不正确！");
 					return result;
@@ -142,7 +128,7 @@ public class SysDictController {
 				//SQL注入校验（只限制非法串改数据库）
 				final String[] sqlInjCheck = {params[0],params[1],params[2]};
 				SqlInjectionUtil.filterContent(sqlInjCheck);
-				
+
 				if(params.length==4) {
 					//SQL注入校验（查询条件SQL 特殊check，此方法仅供此处使用）
 					SqlInjectionUtil.specialFilterContent(params[3]);
@@ -347,9 +333,9 @@ public class SysDictController {
 		}
 		return Result.error("文件导入失败！");
 	}
-	
+
 	/**
-	 * 大数据量的字典表 走异步加载  即前端输入内容过滤数据 
+	 * 大数据量的字典表 走异步加载  即前端输入内容过滤数据
 	 * @param dictCode
 	 * @return
 	 */
@@ -380,7 +366,7 @@ public class SysDictController {
 
 		return result;
 	}
-	
+
 	/**
 	 * 根据字典code加载字典text 返回
 	 */
@@ -410,7 +396,7 @@ public class SysDictController {
 
 		return result;
 	}
-	
+
 	/**
 	 * 根据表名——显示字段-存储字段 pid 加载树形数据
 	 */

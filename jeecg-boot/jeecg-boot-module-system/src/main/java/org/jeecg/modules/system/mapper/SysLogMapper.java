@@ -1,13 +1,12 @@
 package org.jeecg.modules.system.mapper;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 import org.jeecg.modules.system.entity.SysLog;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -46,7 +45,7 @@ public interface SysLogMapper extends BaseMapper<SysLog> {
 	 */
 	Long findTodayIp(@Param("dayStart") Date dayStart, @Param("dayEnd") Date dayEnd);
 	//update-end--Author:zhangweijian  Date:20190428 for：传入开始时间，结束时间参数
-	
+
 	/**
 	 *   首页：根据时间统计访问数量/ip数量
 	 * @param dayStart

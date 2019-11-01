@@ -1,15 +1,15 @@
 package org.jeecg.modules.message.entity;
 
-import java.io.Serializable;
-
 import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * 发送消息实体
  */
 @Data
 public class MsgParams implements Serializable  {
-	
+
 	private static final long serialVersionUID = 1L;
 	/*消息类型*/
 	private String msgType;
@@ -19,5 +19,5 @@ public class MsgParams implements Serializable  {
 	private String templateCode;
 	/*测试数据*/
 	private String testData;
-	
+
 }

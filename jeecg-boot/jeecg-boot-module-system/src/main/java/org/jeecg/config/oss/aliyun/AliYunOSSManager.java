@@ -1,10 +1,10 @@
 package org.jeecg.config.oss.aliyun;
 
-import java.io.InputStream;
-
 import com.aliyun.oss.OSS;
 import org.jeecg.config.oss.OSSManager;
 import org.jeecg.config.oss.OSSProperties;
+
+import java.io.InputStream;
 
 /**
  * Object Storage Service of AliYun.

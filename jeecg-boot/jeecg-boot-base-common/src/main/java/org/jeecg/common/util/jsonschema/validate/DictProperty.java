@@ -1,11 +1,10 @@
 package org.jeecg.common.util.jsonschema.validate;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import com.alibaba.fastjson.JSONObject;
 import org.jeecg.common.util.jsonschema.CommonProperty;
 
-import com.alibaba.fastjson.JSONObject;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 字典属性
@@ -13,14 +12,14 @@ import com.alibaba.fastjson.JSONObject;
  *
  */
 public class DictProperty extends CommonProperty {
-	
+
 	private static final long serialVersionUID = 3786503639885610767L;
-	
+
 	//字典三属性
 	private String dictCode;
 	private String dictTable;
 	private String dictText;
-	
+
 	public String getDictCode() {
 		return dictCode;
 	}
@@ -46,7 +45,7 @@ public class DictProperty extends CommonProperty {
 	}
 
 	public DictProperty() {}
-	
+
 	/**
 	 *  构造器
 	 */
@@ -59,7 +58,7 @@ public class DictProperty extends CommonProperty {
 		this.dictTable= dictTable;
 		this.dictText= dictText;
 	}
-	
+
 	@Override
 	public Map<String, Object> getPropertyJson() {
 		Map<String,Object> map = new HashMap<>();

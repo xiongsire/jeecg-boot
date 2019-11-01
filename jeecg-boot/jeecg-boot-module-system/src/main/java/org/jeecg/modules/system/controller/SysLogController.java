@@ -1,10 +1,10 @@
 package org.jeecg.modules.system.controller;
 
 
-import java.util.Arrays;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import lombok.extern.slf4j.Slf4j;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.system.query.QueryGenerator;
 import org.jeecg.common.util.oConvertUtils;
@@ -17,11 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-
-import lombok.extern.slf4j.Slf4j;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
 
 /**
  * <p>
@@ -35,10 +32,10 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/sys/log")
 @Slf4j
 public class SysLogController {
-	
+
 	@Autowired
 	private ISysLogService sysLogService;
-	
+
 	/**
 	 * @功能：查询日志记录
 	 * @param syslog
@@ -71,7 +68,7 @@ public class SysLogController {
 		result.setResult(pageList);
 		return result;
 	}
-	
+
 	/**
 	 * @功能：删除单个日志记录
 	 * @param id
@@ -91,7 +88,7 @@ public class SysLogController {
 		}
 		return result;
 	}
-	
+
 	/**
 	 * @功能：批量，全部清空日志记录
 	 * @param ids
@@ -112,6 +109,6 @@ public class SysLogController {
 		}
 		return result;
 	}
-	
-	
+
+
 }

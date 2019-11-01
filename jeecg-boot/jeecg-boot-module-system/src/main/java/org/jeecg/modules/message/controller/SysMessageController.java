@@ -1,31 +1,21 @@
 package org.jeecg.modules.message.controller;
 
-import java.util.Arrays;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import lombok.extern.slf4j.Slf4j;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.system.base.controller.JeecgController;
 import org.jeecg.common.system.query.QueryGenerator;
 import org.jeecg.modules.message.entity.SysMessage;
 import org.jeecg.modules.message.service.ISysMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-
-import lombok.extern.slf4j.Slf4j;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Arrays;
 
 /**
  * @Description: 消息
@@ -42,7 +32,7 @@ public class SysMessageController extends JeecgController<SysMessage, ISysMessag
 
 	/**
 	 * 分页列表查询
-	 * 
+	 *
 	 * @param sysMessage
 	 * @param pageNo
 	 * @param pageSize
@@ -60,7 +50,7 @@ public class SysMessageController extends JeecgController<SysMessage, ISysMessag
 
 	/**
 	 * 添加
-	 * 
+	 *
 	 * @param sysMessage
 	 * @return
 	 */
@@ -72,12 +62,12 @@ public class SysMessageController extends JeecgController<SysMessage, ISysMessag
 
 	/**
 	 * 编辑
-	 * 
+	 *
 	 * @param sysMessage
 	 * @return
 	 */
 	@PutMapping(value = "/edit")
-	public Result<?> edit(@RequestBody SysMessage sysMessage) {	
+	public Result<?> edit(@RequestBody SysMessage sysMessage) {
 		sysMessageService.updateById(sysMessage);
         return Result.ok("修改成功!");
 
@@ -85,7 +75,7 @@ public class SysMessageController extends JeecgController<SysMessage, ISysMessag
 
 	/**
 	 * 通过id删除
-	 * 
+	 *
 	 * @param id
 	 * @return
 	 */
@@ -97,7 +87,7 @@ public class SysMessageController extends JeecgController<SysMessage, ISysMessag
 
 	/**
 	 * 批量删除
-	 * 
+	 *
 	 * @param ids
 	 * @return
 	 */
@@ -110,7 +100,7 @@ public class SysMessageController extends JeecgController<SysMessage, ISysMessag
 
 	/**
 	 * 通过id查询
-	 * 
+	 *
 	 * @param id
 	 * @return
 	 */

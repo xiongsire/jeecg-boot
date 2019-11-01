@@ -1,6 +1,6 @@
 package org.jeecg.common.exception;
 
-import io.lettuce.core.RedisConnectionException;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.jeecg.common.api.vo.Result;
@@ -13,11 +13,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
-import lombok.extern.slf4j.Slf4j;
-
 /**
  * 异常处理器
- * 
+ *
  * @Author scott
  * @Date 2019
  */
@@ -57,7 +55,7 @@ public class JeecgBootExceptionHandler {
 		log.error(e.getMessage(), e);
 		return Result.error("操作失败，"+e.getMessage());
 	}
-	
+
 	/**
 	 * @Author 政辉
 	 * @param e
@@ -68,9 +66,9 @@ public class JeecgBootExceptionHandler {
 		log.error(e.getMessage(), e);
 		return Result.error("没有权限，请联系管理员授权");
 	}
-	
-	 /** 
-	  * spring默认上传大小100MB 超出大小捕获异常MaxUploadSizeExceededException 
+
+	 /**
+	  * spring默认上传大小100MB 超出大小捕获异常MaxUploadSizeExceededException
 	  */
     @ExceptionHandler(MaxUploadSizeExceededException.class)
     public Result<?> handleMaxUploadSizeExceededException(MaxUploadSizeExceededException e) {

@@ -1,14 +1,13 @@
 package org.jeecg.modules.system.mapper;
 
-import java.util.List;
-import java.util.Map;
-
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.jeecg.modules.system.entity.SysCategory;
 import org.jeecg.modules.system.model.TreeSelectModel;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Description: 分类字典
@@ -17,7 +16,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @Version: V1.0
  */
 public interface SysCategoryMapper extends BaseMapper<SysCategory> {
-	
+
 	/**
 	  *  根据父级ID查询树节点数据
 	 * @param pid
@@ -27,6 +26,6 @@ public interface SysCategoryMapper extends BaseMapper<SysCategory> {
 
 	@Select("SELECT ID FROM sys_category WHERE CODE = #{code,jdbcType=VARCHAR}")
 	public String queryIdByCode(@Param("code")  String code);
-	
+
 
 }

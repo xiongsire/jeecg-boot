@@ -1,12 +1,9 @@
 package org.jeecg.modules.system.util;
 
-import org.jeecg.common.constant.CommonConstant;
-import org.jeecg.common.util.RedisUtil;
 import org.jeecg.common.util.oConvertUtils;
 import org.jeecg.modules.system.entity.SysDepart;
 import org.jeecg.modules.system.model.DepartIdModel;
 import org.jeecg.modules.system.model.SysDepartTreeModel;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +12,7 @@ import java.util.List;
  * <P>
  * 对应部门的表,处理并查找树级数据
  * <P>
- * 
+ *
  * @Author: Steve
  * @Date: 2019-01-22
  */
@@ -23,7 +20,7 @@ public class FindsDepartsChildrenUtil {
 
 	//部门树信息-树结构
 	//private static List<SysDepartTreeModel> sysDepartTreeList = new ArrayList<SysDepartTreeModel>();
-	
+
 	//部门树id-树结构
     //private static List<DepartIdModel> idList = new ArrayList<>();
 
@@ -81,7 +78,7 @@ public class FindsDepartsChildrenUtil {
             }
         }
         getGrandChildren(treeList,recordList,departIdList);
-        
+
         //idList = departIdList;
         return treeList;
     }
@@ -107,7 +104,7 @@ public class FindsDepartsChildrenUtil {
         }
 
     }
-    
+
 
     /**
      * queryTreeList的子方法 ====4====

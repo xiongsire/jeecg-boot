@@ -1,11 +1,10 @@
 package org.jeecg.common.util.jsonschema.validate;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import com.alibaba.fastjson.JSONObject;
 import org.jeecg.common.util.jsonschema.CommonProperty;
 
-import com.alibaba.fastjson.JSONObject;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 字典属性
@@ -13,15 +12,15 @@ import com.alibaba.fastjson.JSONObject;
  *
  */
 public class TreeSelectProperty extends CommonProperty {
-	
+
 	private static final long serialVersionUID = 3786503639885610767L;
-	
+
 	private String dict;//表名,文本,id
 	private String pidField;//父级字段 默认pid
 	private String pidValue;//父级节点的值 暂时没用到 默认为0
 	private String hasChildField;
 	private String textField;//树形下拉保存text值的字段名
-	
+
 	public String getDict() {
 		return dict;
 	}
@@ -45,7 +44,7 @@ public class TreeSelectProperty extends CommonProperty {
 	public void setPidValue(String pidValue) {
 		this.pidValue = pidValue;
 	}
-	
+
 	public String getHasChildField() {
 		return hasChildField;
 	}
@@ -102,7 +101,7 @@ public class TreeSelectProperty extends CommonProperty {
 		this(key,title,pidValue);
 		this.textField = textField;
 	}
-	
+
 	@Override
 	public Map<String, Object> getPropertyJson() {
 		Map<String,Object> map = new HashMap<>();

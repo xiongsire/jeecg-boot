@@ -1,23 +1,21 @@
 package org.jeecg.common.util.jsonschema.validate;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import com.alibaba.fastjson.JSONObject;
 import org.jeecg.common.util.jsonschema.CommonProperty;
 
-import com.alibaba.fastjson.JSONObject;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PopupProperty extends CommonProperty {
-	
+
 	private static final long serialVersionUID = -3200493311633999539L;
-	
+
 	private String code;
-	
+
 	private String destFields;
-	
+
 	private String orgFields;
-	
+
 	public String getCode() {
 		return code;
 	}
@@ -43,7 +41,7 @@ public class PopupProperty extends CommonProperty {
 	}
 
 	public PopupProperty() {}
-	
+
 	public PopupProperty(String key,String title,String code,String destFields,String orgFields) {
 		this.view = "popup";
 		this.type = "string";
@@ -53,7 +51,7 @@ public class PopupProperty extends CommonProperty {
 		this.destFields=destFields;
 		this.orgFields=orgFields;
 	}
-	
+
 
 	@Override
 	public Map<String, Object> getPropertyJson() {

@@ -1,17 +1,8 @@
 package org.jeecg.modules.system.service.impl;
 
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.sql.DataSource;
-
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.jeecg.common.constant.CacheConstant;
 import org.jeecg.common.constant.CommonConstant;
@@ -34,15 +25,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import com.alibaba.fastjson.JSONObject;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-
-import lombok.extern.slf4j.Slf4j;
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * @Description: 底层共通业务API，提供其他独立模块调用
  * @Author: scott
- * @Date:2019-4-20 
+ * @Date:2019-4-20
  * @Version:V1.0
  */
 @Slf4j
@@ -50,7 +46,7 @@ import lombok.extern.slf4j.Slf4j;
 public class SysBaseApiImpl implements ISysBaseAPI {
 	/** 当前系统数据库类型 */
 	public static String DB_TYPE = "";
-	
+
 	@Resource
 	private SysLogMapper sysLogMapper;
 	@Autowired
@@ -71,7 +67,7 @@ public class SysBaseApiImpl implements ISysBaseAPI {
 	private SysRoleMapper roleMapper;
 	@Resource
 	private SysDepartMapper departMapper;
-	
+
 	@Override
 	public void addLog(String LogContent, Integer logType, Integer operatetype) {
 		SysLog sysLog = new SysLog();
@@ -118,7 +114,7 @@ public class SysBaseApiImpl implements ISysBaseAPI {
 		BeanUtils.copyProperties(sysUser, loginUser);
 		return loginUser;
 	}
-	
+
 	@Override
 	public LoginUser getUserById(String id) {
 		if(oConvertUtils.isEmpty(id)) {
@@ -215,7 +211,7 @@ public class SysBaseApiImpl implements ISysBaseAPI {
 		    	webSocket.sendOneMessage(sysUser.getId(), obj.toJSONString());
 			}
 		}
-		
+
 	}
 	/**
 	 * 获取数据库类型
@@ -247,7 +243,7 @@ public class SysBaseApiImpl implements ISysBaseAPI {
 			}
 		}
 		return DB_TYPE;
-		
+
 	}
 
 	@Override

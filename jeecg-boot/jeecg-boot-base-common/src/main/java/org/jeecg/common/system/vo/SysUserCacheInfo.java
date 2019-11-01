@@ -1,21 +1,21 @@
 package org.jeecg.common.system.vo;
 
-import java.util.List;
-
 import org.jeecg.common.util.DateUtils;
 
+import java.util.List;
+
 public class SysUserCacheInfo {
-	
+
 	private String sysUserCode;
-	
+
 	private String sysUserName;
-	
+
 	private String sysOrgCode;
-	
+
 	private List<String> sysMultiOrgCode;
-	
+
 	private boolean oneDepart;
-	
+
 	public boolean isOneDepart() {
 		return oneDepart;
 	}

@@ -1,32 +1,31 @@
 package org.jeecg.common.util.jsonschema.validate;
 
+import com.alibaba.fastjson.JSONObject;
+import org.jeecg.common.system.vo.DictModel;
+import org.jeecg.common.util.jsonschema.CommonProperty;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.jeecg.common.system.vo.DictModel;
-import org.jeecg.common.util.jsonschema.CommonProperty;
-
-import com.alibaba.fastjson.JSONObject;
-
 public class StringProperty extends CommonProperty {
-	
+
 	private static final long serialVersionUID = -3200493311633999539L;
-	
+
 	private Integer maxLength;
-	
+
 	private Integer minLength;
-	
+
 	/**
 	 * 根据ECMA 262正则表达式方言，该字符串应该是有效的正则表达式。
 	 */
 	private String pattern;
-	
+
 	/**
 	 * 错误提示信息
 	 */
 	private String errorInfo;
-	
+
 	public Integer getMaxLength() {
 		return maxLength;
 	}
@@ -51,7 +50,7 @@ public class StringProperty extends CommonProperty {
 	public void setPattern(String pattern) {
 		this.pattern = pattern;
 	}
-	
+
 	public String getErrorInfo() {
 		return errorInfo;
 	}
@@ -63,7 +62,7 @@ public class StringProperty extends CommonProperty {
 
 
 	public StringProperty() {}
-	
+
 	/**
 	 *  一般字符串类型走这个构造器
 	 * @param key 字段名
@@ -78,11 +77,11 @@ public class StringProperty extends CommonProperty {
 		this.title = title;
 		this.type = "string";
 	}
-	
+
 	/**
-         *  列表类型的走这个构造器  
+         *  列表类型的走这个构造器
 	 * @param key 字段名
-	 * @param title 字段备注 
+	 * @param title 字段备注
 	 * @param view 展示控件 list-checkbox-radio
 	 * @param maxLength 数据库字段最大长度
 	 * @param include 数据字典

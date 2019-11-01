@@ -1,11 +1,11 @@
 package org.jeecg.config.oss.tencent;
 
-import java.io.InputStream;
-
 import com.qcloud.cos.COS;
 import com.qcloud.cos.model.ObjectMetadata;
 import org.jeecg.config.oss.OSSManager;
 import org.jeecg.config.oss.OSSProperties;
+
+import java.io.InputStream;
 
 /**
  * Object Storage Service of Tencent cloud.

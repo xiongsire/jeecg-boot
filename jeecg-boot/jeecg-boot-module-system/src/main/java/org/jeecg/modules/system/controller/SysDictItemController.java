@@ -1,30 +1,22 @@
 package org.jeecg.modules.system.controller;
 
 
-import java.util.Arrays;
-import java.util.Date;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import lombok.extern.slf4j.Slf4j;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.constant.CacheConstant;
 import org.jeecg.common.system.query.QueryGenerator;
-import org.jeecg.common.util.oConvertUtils;
 import org.jeecg.modules.system.entity.SysDictItem;
 import org.jeecg.modules.system.service.ISysDictItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-
-import lombok.extern.slf4j.Slf4j;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
+import java.util.Date;
 
 /**
  * <p>
@@ -41,7 +33,7 @@ public class SysDictItemController {
 
 	@Autowired
 	private ISysDictItemService sysDictItemService;
-	
+
 	/**
 	 * @功能：查询字典数据
 	 * @param sysDictItem
@@ -62,7 +54,7 @@ public class SysDictItemController {
 		result.setResult(pageList);
 		return result;
 	}
-	
+
 	/**
 	 * @功能：新增
 	 * @param sysDict
@@ -82,7 +74,7 @@ public class SysDictItemController {
 		}
 		return result;
 	}
-	
+
 	/**
 	 * @功能：编辑
 	 * @param sysDictItem
@@ -105,7 +97,7 @@ public class SysDictItemController {
 		}
 		return result;
 	}
-	
+
 	/**
 	 * @功能：删除字典数据
 	 * @param id
@@ -126,7 +118,7 @@ public class SysDictItemController {
 		}
 		return result;
 	}
-	
+
 	/**
 	 * @功能：批量删除字典数据
 	 * @param ids
@@ -144,5 +136,5 @@ public class SysDictItemController {
 		}
 		return result;
 	}
-	
+
 }

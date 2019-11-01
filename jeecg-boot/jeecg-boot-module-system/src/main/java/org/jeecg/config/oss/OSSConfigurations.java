@@ -1,12 +1,12 @@
 package org.jeecg.config.oss;
 
-import java.util.Collections;
-import java.util.EnumMap;
-import java.util.Map;
-
 import org.jeecg.config.oss.aliyun.AliYunOSSAutoConfiguration;
 import org.jeecg.config.oss.tencent.QcCOSAutoConfiguration;
 import org.springframework.util.Assert;
+
+import java.util.Collections;
+import java.util.EnumMap;
+import java.util.Map;
 
 
 /**

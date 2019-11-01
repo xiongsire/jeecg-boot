@@ -1,8 +1,7 @@
 package org.jeecg.modules.system.service.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.jeecg.modules.system.entity.SysDepart;
 import org.jeecg.modules.system.entity.SysUser;
 import org.jeecg.modules.system.entity.SysUserDepart;
@@ -14,8 +13,8 @@ import org.jeecg.modules.system.service.ISysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <P>
@@ -30,7 +29,7 @@ public class SysUserDepartServiceImpl extends ServiceImpl<SysUserDepartMapper, S
 	private ISysDepartService sysDepartService;
 	@Autowired
 	private ISysUserService sysUserService;
-	
+
 
 	/**
 	 * 根据用户id查询部门信息
@@ -61,8 +60,8 @@ public class SysUserDepartServiceImpl extends ServiceImpl<SysUserDepartMapper, S
 			e.fillInStackTrace();
 		}
 		return null;
-		
-		
+
+
 	}
 
 
@@ -90,5 +89,5 @@ public class SysUserDepartServiceImpl extends ServiceImpl<SysUserDepartMapper, S
 		}
 		return new ArrayList<SysUser>();
 	}
-	
+
 }

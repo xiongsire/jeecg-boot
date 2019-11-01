@@ -1,23 +1,15 @@
 package org.jeecg.modules.system.service.impl;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.jeecg.common.constant.CacheConstant;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.jeecg.common.util.oConvertUtils;
 import org.jeecg.modules.system.entity.SysRolePermission;
 import org.jeecg.modules.system.mapper.SysRolePermissionMapper;
 import org.jeecg.modules.system.service.ISysRolePermissionService;
-
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-
-import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
+
+import java.util.*;
 
 /**
  * <p>
@@ -58,7 +50,7 @@ public class SysRolePermissionServiceImpl extends ServiceImpl<SysRolePermissionM
 			}
 			this.saveBatch(list);
 		}
-		
+
 		List<String> delete = getDiff(permissionIds,lastPermissionIds);
 		if(delete!=null && delete.size()>0) {
 			for (String permissionId : delete) {
@@ -66,7 +58,7 @@ public class SysRolePermissionServiceImpl extends ServiceImpl<SysRolePermissionM
 			}
 		}
 	}
-	
+
 	/**
 	 * 从diff中找出main中没有的元素
 	 * @param main
@@ -80,7 +72,7 @@ public class SysRolePermissionServiceImpl extends ServiceImpl<SysRolePermissionM
 		if(oConvertUtils.isEmpty(main)) {
 			return Arrays.asList(diff.split(","));
 		}
-		
+
 		String[] mainArr = main.split(",");
 		String[] diffArr = diff.split(",");
 		Map<String, Integer> map = new HashMap<>();

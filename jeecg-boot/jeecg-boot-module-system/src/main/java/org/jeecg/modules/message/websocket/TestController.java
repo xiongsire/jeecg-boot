@@ -1,5 +1,6 @@
 package org.jeecg.modules.message.websocket;
 
+import com.alibaba.fastjson.JSONObject;
 import org.jeecg.common.api.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -7,15 +8,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alibaba.fastjson.JSONObject;
-
 @RestController
 @RequestMapping("webSocketApi")
 public class TestController {
-	
+
     @Autowired
     private WebSocket webSocket;
- 
+
     @PostMapping("/sendAll")
     public Result<String> sendAll(@RequestBody JSONObject jsonObject) {
     	Result<String> result = new Result<String>();
@@ -28,7 +27,7 @@ public class TestController {
         result.setResult("群发！");
         return result;
     }
-    
+
     @PostMapping("/sendUser")
     public Result<String> sendUser(@RequestBody JSONObject jsonObject) {
     	Result<String> result = new Result<String>();
@@ -43,5 +42,5 @@ public class TestController {
         result.setResult("单发");
         return result;
     }
-    
+
 }

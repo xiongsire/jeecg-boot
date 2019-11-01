@@ -1,17 +1,6 @@
 package org.jeecg.common.system.controller;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import lombok.extern.slf4j.Slf4j;
 import org.jeecg.common.api.vo.Result;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.AntPathMatcher;
@@ -25,7 +14,11 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.HandlerMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import lombok.extern.slf4j.Slf4j;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * <p>
@@ -51,7 +44,7 @@ public class CommonController {
 	public Result<?> noauth()  {
 		return Result.error("没有权限，请联系管理员授权");
 	}
-	
+
 	@PostMapping(value = "/upload")
 	public Result<?> upload(HttpServletRequest request, HttpServletResponse response) {
 		Result<?> result = new Result<>();
@@ -88,7 +81,7 @@ public class CommonController {
 	/**
 	 * 预览图片
 	 * 请求地址：http://localhost:8080/common/view/{user/20190119/e1fe9925bc315c60addea1b98eb1cb1349547719_1547866868179.jpg}
-	 * 
+	 *
 	 * @param request
 	 * @param response
 	 */
@@ -136,14 +129,14 @@ public class CommonController {
 		}
 
 	}
-	
+
 	/**
 	 * 下载文件
 	 * 请求地址：http://localhost:8080/common/download/{user/20190119/e1fe9925bc315c60addea1b98eb1cb1349547719_1547866868179.jpg}
-	 * 
+	 *
 	 * @param request
 	 * @param response
-	 * @throws Exception 
+	 * @throws Exception
 	 */
 	@GetMapping(value = "/download/**")
 	public void download(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -172,7 +165,7 @@ public class CommonController {
 	 			}
 	 			response.flushBuffer();
 	         }
-			
+
 		} catch (Exception e) {
 			log.info("文件下载失败" + e.getMessage());
 			// e.printStackTrace();
@@ -206,7 +199,7 @@ public class CommonController {
 	}
 
 	/**
-	  *  把指定URL后的字符串全部截断当成参数 
+	  *  把指定URL后的字符串全部截断当成参数
 	  *  这么做是为了防止URL中包含中文或者特殊字符（/等）时，匹配不了的问题
 	 * @param request
 	 * @return
@@ -216,5 +209,5 @@ public class CommonController {
 		String bestMatchPattern = (String) request.getAttribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE);
 		return new AntPathMatcher().extractPathWithinPattern(bestMatchPattern, path);
 	}
-	
+
 }

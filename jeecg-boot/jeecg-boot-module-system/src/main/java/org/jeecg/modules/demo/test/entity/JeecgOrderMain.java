@@ -1,13 +1,13 @@
 package org.jeecg.modules.demo.test.entity;
 
-import java.io.Serializable;
-import java.util.Date;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.Data;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import java.io.Serializable;
 
 /**
  * @Description: 订单
@@ -19,7 +19,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @TableName("jeecg_order_main")
 public class JeecgOrderMain implements Serializable {
     private static final long serialVersionUID = 1L;
-    
+
 	/**主键*/
     @TableId(type = IdType.ID_WORKER_STR)
 	private java.lang.String id;

@@ -1,10 +1,6 @@
 package org.jeecg.common.aspect.annotation;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 /**
   *  数据权限注解
@@ -20,8 +16,8 @@ public @interface PermissionData {
 	 * @return
 	 */
 	String value() default "";
-	
-	
+
+
 	/**
 	 * 配置菜单的组件路径,用于数据权限
 	 */

@@ -1,28 +1,17 @@
 package org.jeecg.modules.quartz.service.impl;
 
-import java.util.List;
-
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.jeecg.common.constant.CommonConstant;
 import org.jeecg.common.exception.JeecgBootException;
 import org.jeecg.modules.quartz.entity.QuartzJob;
 import org.jeecg.modules.quartz.mapper.QuartzJobMapper;
 import org.jeecg.modules.quartz.service.IQuartzJobService;
-import org.quartz.CronScheduleBuilder;
-import org.quartz.CronTrigger;
-import org.quartz.Job;
-import org.quartz.JobBuilder;
-import org.quartz.JobDetail;
-import org.quartz.JobKey;
-import org.quartz.Scheduler;
-import org.quartz.SchedulerException;
-import org.quartz.TriggerBuilder;
-import org.quartz.TriggerKey;
+import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-
-import lombok.extern.slf4j.Slf4j;
+import java.util.List;
 
 /**
  * @Description: 定时任务在线管理
@@ -70,7 +59,7 @@ public class QuartzJobServiceImpl extends ServiceImpl<QuartzJobMapper, QuartzJob
 
 	/**
 	 * 编辑&启停定时任务
-	 * @throws SchedulerException 
+	 * @throws SchedulerException
 	 */
 	@Override
 	public boolean editAndScheduleJob(QuartzJob quartzJob) throws SchedulerException {
@@ -95,7 +84,7 @@ public class QuartzJobServiceImpl extends ServiceImpl<QuartzJobMapper, QuartzJob
 
 	/**
 	 * 添加定时任务
-	 * 
+	 *
 	 * @param jobClassName
 	 * @param cronExpression
 	 * @param parameter
@@ -126,7 +115,7 @@ public class QuartzJobServiceImpl extends ServiceImpl<QuartzJobMapper, QuartzJob
 
 	/**
 	 * 删除定时任务
-	 * 
+	 *
 	 * @param jobClassName
 	 */
 	private void schedulerDelete(String jobClassName) {

@@ -1,11 +1,10 @@
 package org.jeecg.modules.system.mapper;
 
-import java.util.List;
-
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 import org.jeecg.modules.system.entity.SysPermissionDataRule;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import java.util.List;
 
 /**
  * <p>
@@ -16,7 +15,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @since 2019-04-01
  */
 public interface SysPermissionDataRuleMapper extends BaseMapper<SysPermissionDataRule> {
-	
+
 	/**
 	  * 根据用户名和权限id查询
 	 * @param username

@@ -1,11 +1,11 @@
 package org.jeecg.modules.demo.test.mapper;
 
-import java.util.List;
-
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Select;
 import org.jeecg.modules.demo.test.entity.JeecgOrderTicket;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+import java.util.List;
 
 /**
  * @Description: 订单机票
@@ -22,8 +22,8 @@ public interface JeecgOrderTicketMapper extends BaseMapper<JeecgOrderTicket> {
 	 */
     @Delete("DELETE FROM JEECG_ORDER_TICKET WHERE ORDER_ID = #{mainId}")
 	public boolean deleteTicketsByMainId(String mainId);
-    
-    
+
+
     @Select("SELECT * FROM JEECG_ORDER_TICKET WHERE ORDER_ID = #{mainId}")
 	public List<JeecgOrderTicket> selectTicketsByMainId(String mainId);
 }

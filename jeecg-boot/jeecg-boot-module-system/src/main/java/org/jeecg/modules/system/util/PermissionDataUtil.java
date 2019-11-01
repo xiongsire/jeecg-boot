@@ -1,9 +1,9 @@
 package org.jeecg.modules.system.util;
 
-import java.util.List;
-
 import org.jeecg.common.util.oConvertUtils;
 import org.jeecg.modules.system.entity.SysPermission;
+
+import java.util.List;
 
 /**
  * @Author: scott
@@ -13,7 +13,7 @@ public class PermissionDataUtil {
 
 	/**
 	 * 智能处理错误数据，简化用户失误操作
-	 * 
+	 *
 	 * @param permission
 	 */
 	public static SysPermission intelligentProcessData(SysPermission permission) {
@@ -38,7 +38,7 @@ public class PermissionDataUtil {
 			}
 			permission.setComponent(component);
 		}
-		
+
 		// 请求URL
 		if (oConvertUtils.isNotEmpty(permission.getUrl())) {
 			String url = permission.getUrl();
@@ -50,7 +50,7 @@ public class PermissionDataUtil {
 			}
 			permission.setUrl(url);
 		}
-		
+
 		// 一级菜单默认组件
 		if (0 == permission.getMenuType() && oConvertUtils.isEmpty(permission.getComponent())) {
 			// 一级菜单默认组件
@@ -58,7 +58,7 @@ public class PermissionDataUtil {
 		}
 		return permission;
 	}
-	
+
 	/**
 	 * 如果没有index页面 需要new 一个放到list中
 	 * @param metaList
@@ -75,5 +75,5 @@ public class PermissionDataUtil {
 			metaList.add(0,new SysPermission(true));
 		}
 	}
-	
+
 }

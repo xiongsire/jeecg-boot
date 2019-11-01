@@ -1,8 +1,8 @@
 package org.jeecg.modules.message.websocket;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.CopyOnWriteArraySet;
+import com.alibaba.fastjson.JSONObject;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
@@ -10,24 +10,21 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
-
-import org.springframework.stereotype.Component;
-
-import com.alibaba.fastjson.JSONObject;
-
-import lombok.extern.slf4j.Slf4j;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 @Component
 @Slf4j
 @ServerEndpoint("/websocket/{userId}")
 //此注解相当于设置访问URL
 public class WebSocket {
-    
+
     private Session session;
-    
+
     private static CopyOnWriteArraySet<WebSocket> webSockets =new CopyOnWriteArraySet<>();
     private static Map<String,Session> sessionPool = new HashMap<String,Session>();
-    
+
     @OnOpen
     public void onOpen(Session session, @PathParam(value="userId")String userId) {
         try {
@@ -38,7 +35,7 @@ public class WebSocket {
 		} catch (Exception e) {
 		}
     }
-    
+
     @OnClose
     public void onClose() {
         try {
@@ -47,7 +44,7 @@ public class WebSocket {
 		} catch (Exception e) {
 		}
     }
-    
+
     @OnMessage
     public void onMessage(String message) {
     	//log.info("【websocket消息】收到客户端消息:"+message);
@@ -56,7 +53,7 @@ public class WebSocket {
     	obj.put("msgTxt", "心跳响应");//消息内容
     	session.getAsyncRemote().sendText(obj.toJSONString());
     }
-    
+
     // 此为广播消息
     public void sendAllMessage(String message) {
     	log.info("【websocket消息】广播消息:"+message);
@@ -70,7 +67,7 @@ public class WebSocket {
             }
         }
     }
-    
+
     // 此为单点消息
     public void sendOneMessage(String userId, String message) {
         Session session = sessionPool.get(userId);
@@ -83,7 +80,7 @@ public class WebSocket {
             }
         }
     }
-    
+
     // 此为单点消息(多人)
     public void sendMoreMessage(String[] userIds, String message) {
     	for(String userId:userIds) {
@@ -97,7 +94,7 @@ public class WebSocket {
                 }
             }
     	}
-        
+
     }
-    
+
 }
